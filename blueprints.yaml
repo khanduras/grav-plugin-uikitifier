@@ -1,0 +1,27 @@
+name: Uikitifier
+version: 0.1.0
+description: "Loads UIKit v2.18.0 by Yootheme"
+icon: google
+author:
+  name: Daniel James
+  email: danieljames@chiefqualakon.net
+  url: http://www.khanduras.net
+homepage: https://github.com/bobrocke/grav-plugin-materializer
+demo: http://materialize.bobrockefeller.com/
+keywords: uikit, css, plugin, framework
+bugs: https://github.com/bobrocke/grav-plugin-materializer/issues
+license: MIT
+
+form:
+  validation: strict
+  fields:
+    enabled:
+      type: toggle
+      label: Plugin status
+      highlight: 1
+      default: 0
+      options:
+        1: Enabled
+        0: Disabled
+      validate:
+        type: bool
