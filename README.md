@@ -37,7 +37,6 @@ style: gradient   # flat / almost-flat / gradient
 customizer: off      # specifiy customizer .css file
 load_all: false
 ```
-uikitifier
 Individual components can be enabled or disabled accordingly
 
 ```
