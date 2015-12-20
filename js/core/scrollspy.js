@@ -1,4 +1,4 @@
-/*! UIkit 2.18.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
@@ -8,7 +8,7 @@
         scrollspies    = [],
         checkScrollSpy = function() {
             for(var i=0; i < scrollspies.length; i++) {
-                UI.support.requestAnimationFrame.apply(window, [scrollspies[i].check]);
+                window.requestAnimationFrame.apply(window, [scrollspies[i].check]);
             }
         };
 
@@ -111,7 +111,7 @@
     var scrollspynavs = [],
         checkScrollSpyNavs = function() {
             for(var i=0; i < scrollspynavs.length; i++) {
-                UI.support.requestAnimationFrame.apply(window, [scrollspynavs[i].check]);
+                window.requestAnimationFrame.apply(window, [scrollspynavs[i].check]);
             }
         };
 
@@ -148,7 +148,7 @@
         init: function() {
 
             var ids     = [],
-                links   = this.find("a[href^='#']").each(function(){ ids.push(UI.$(this).attr("href")); }),
+                links   = this.find("a[href^='#']").each(function(){ if(this.getAttribute("href").trim()!=='#') ids.push(this.getAttribute("href")); }),
                 targets = UI.$(ids.join(",")),
 
                 clsActive  = this.options.cls,
@@ -179,7 +179,7 @@
                     if (!target) return;
 
                     if ($this.options.closest) {
-                        links.closest(clsClosest).removeClass(clsActive);
+                        links.blur().closest(clsClosest).removeClass(clsActive);
                         navitems = links.filter("a[href='#"+target.attr("id")+"']").closest(clsClosest).addClass(clsActive);
                     } else {
                         navitems = links.removeClass(clsActive).filter("a[href='#"+target.attr("id")+"']").addClass(clsActive);

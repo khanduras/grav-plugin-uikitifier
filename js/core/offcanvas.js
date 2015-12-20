@@ -1,4 +1,4 @@
-/*! UIkit 2.18.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(UI) {
 
     "use strict";
@@ -19,13 +19,15 @@
                 bar       = element.find(".uk-offcanvas-bar:first"),
                 rtl       = (UI.langdirection == "right"),
                 flip      = bar.hasClass("uk-offcanvas-bar-flip") ? -1:1,
-                dir       = flip * (rtl ? -1 : 1);
+                dir       = flip * (rtl ? -1 : 1),
+
+                scrollbarwidth =  window.innerWidth - $body.width();
 
             scrollpos = {x: window.pageXOffset, y: window.pageYOffset};
 
             element.addClass("uk-active");
 
-            $body.css({"width": window.innerWidth, "height": window.innerHeight}).addClass("uk-offcanvas-page");
+            $body.css({"width": window.innerWidth - scrollbarwidth, "height": window.innerHeight}).addClass("uk-offcanvas-page");
             $body.css((rtl ? "margin-right" : "margin-left"), (rtl ? -1 : 1) * (bar.outerWidth() * dir)).width(); // .width() - force redraw
 
             $html.css('margin-top', scrollpos.y * -1);
@@ -34,8 +36,8 @@
 
             this._initElement(element);
 
-            $doc.trigger('show.uk.offcanvas', [element, bar]);
-            
+            bar.trigger('show.uk.offcanvas', [element, bar]);
+
             // Update ARIA
             element.attr('aria-hidden', 'false');
         },
@@ -53,8 +55,8 @@
                     bar.removeClass("uk-offcanvas-bar-show");
                     $html.css('margin-top', '');
                     window.scrollTo(scrollpos.x, scrollpos.y);
-                    UI.$doc.trigger('hide.uk.offcanvas', [panel, bar]);
-                    
+                    bar.trigger('hide.uk.offcanvas', [panel, bar]);
+
                     // Update ARIA
                     panel.attr('aria-hidden', 'true');
                 };
@@ -96,10 +98,10 @@
                 Offcanvas.hide();
             });
 
-            element.on("click", "a[href^='#']", function(e){
+            element.on("click", "a[href*='#']", function(e){
 
-                var element = UI.$(this),
-                    href = element.attr("href");
+                var link = UI.$(this),
+                    href = link.attr("href");
 
                 if (href == "#") {
                     return;
@@ -107,14 +109,20 @@
 
                 UI.$doc.one('hide.uk.offcanvas', function() {
 
-                    var target = UI.$(href);
+                    var target;
 
-                    if (!target.length) {
-                        target = UI.$('[name="'+href.replace('#','')+'"]');
+                    try {
+                        target = UI.$(link[0].hash);
+                    } catch (e){
+                        target = '';
                     }
 
-                    if (UI.Utils.scrollToElement && target.length) {
-                        UI.Utils.scrollToElement(target);
+                    if (!target.length) {
+                        target = UI.$('[name="'+link[0].hash.replace('#','')+'"]');
+                    }
+
+                    if (target.length && UI.Utils.scrollToElement) {
+                        UI.Utils.scrollToElement(target, UI.Utils.options(link.attr('data-uk-smooth-scroll') || '{}'));
                     } else {
                         window.location.href = href;
                     }

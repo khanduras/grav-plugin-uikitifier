@@ -3,7 +3,9 @@ always_load: true
 mode: staging   # production / staging
 load_uikit: true
 style: gradient   # flat / almost-flat / gradient
-customizer: off      # specifiy customizer .css file
+customizer:       # specifiy customizer .css file
+  enabled: false
+  name:     
 load_all: false
 
 load_component_accordion: false
@@ -33,11 +35,3 @@ load_component_timepicker: false
 load_component_tooltip: true
 load_component_upload: false
 
-load_core_alert: false
-load_core_button: false
-load_core_core: false
-load_core_cover: false
-load_core_dropdown: false
-load_core_grid: false
-load_core_modal: false
-load_core_nav: false

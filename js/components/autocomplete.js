@@ -1,4 +1,4 @@
-/*! UIkit 2.18.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 (function(addon) {
 
     var component;
@@ -50,7 +50,7 @@
                 var ele = UI.$(this);
 
                 if (!ele.data("autocomplete")) {
-                    var obj = UI.autocomplete(ele, UI.Utils.options(ele.attr("data-uk-autocomplete")));
+                    UI.autocomplete(ele, UI.Utils.options(ele.attr("data-uk-autocomplete")));
                 }
             });
 
@@ -199,7 +199,7 @@
 
             var data = this.selected.data();
 
-            this.trigger("select.uk.autocomplete", [data, this]);
+            this.trigger("selectitem.uk.autocomplete", [data, this]);
 
             if (data.value) {
                 this.input.val(data.value).trigger('change');
@@ -212,6 +212,10 @@
             if (this.visible) return;
             this.visible = true;
             this.element.addClass("uk-open");
+
+            if (active && active!==this) {
+                active.hide();
+            }
 
             active = this;
 
@@ -305,8 +309,6 @@
         },
 
         render: function(data) {
-
-            var $this = this;
 
             this.dropdown.empty();
 

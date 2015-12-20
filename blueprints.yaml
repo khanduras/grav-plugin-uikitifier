@@ -1,19 +1,19 @@
 name: Uikitifier
-version: 0.1.0
-description: "Loads UIKit v2.18.0 by Yootheme"
-icon: google
+version: 0.2.1
+description: "Loads UIKit v2.24.3 by Yootheme"
+icon: gears
 author:
   name: Daniel James
   email: danieljames@chiefqualakon.net
   url: http://www.khanduras.net
-homepage: https://github.com/bobrocke/grav-plugin-materializer
-demo: http://materialize.bobrockefeller.com/
-keywords: uikit, css, plugin, framework
-bugs: https://github.com/bobrocke/grav-plugin-materializer/issues
+homepage: https://github.com/khanduras/grav-plugin-uikitifier
+demo: http://uk-library.khanduras.net/
+keywords: uikit, css, js, plugin, framework
+bugs: https://github.com/khanduras/grav-plugin-uikitifier/issues
 license: MIT
 
 form:
-  validation: strict
+  validation: loose
   fields:
     enabled:
       type: toggle
@@ -25,3 +25,40 @@ form:
         0: Disabled
       validate:
         type: bool
+    always_load:
+      type: toggle
+      label: Always load components?
+      highlight: 1
+      default: 0
+      options:
+        1: Yes
+        0: No
+      validate:
+        type: bool
+    mode:
+        type: toggle
+        label: Production Mode
+        options:
+          production: Production
+          staging: Staging
+        validate:
+          type: string
+    load_uikit:
+        type: toggle
+        label: Load UI Kit?
+        highlight: 1
+        default: 1
+        options:
+          1: Yes
+          0: No
+        validate:
+          type: bool
+    style:
+        type: toggle
+        label: Style
+        options:
+          flat: Flat
+          almost-flat: Almost-Flat
+          gradient: Gradient
+        validate:
+          type: string
