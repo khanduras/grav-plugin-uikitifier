@@ -1,3 +1,9 @@
+# v0.2.2
+## 1/5/2016
+
+1. [](#updated)
+    * Corrected dotnav (thanks to @nickstamat)
+
 # v0.2.1
 ## 12/21/2015
 

@@ -128,14 +128,14 @@ class UikitifierPlugin extends Plugin
             }   
         }
 
-        if ($config['load_all'] or $config['load_component_dotnov']) {
-            $uikitifier_bits[] = 'plugin://uikitifier/js/components/dotnov'.$mode.'.js';
+        if ($config['load_all'] or $config['load_component_dotnav']) {
+            $uikitifier_bits[] = 'plugin://uikitifier/js/components/dotnav'.$mode.'.js';
             if ($config['style'] == 'almost-flat') {
-                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnov.almost-flat'.$mode.'.css';
+                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnav.almost-flat'.$mode.'.css';
             } elseif ($config['style'] == 'gradient') {
-                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnov.gradient'.$mode.'.css';
+                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnav.gradient'.$mode.'.css';
             } else {
-                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnov'.$mode.'.css';
+                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnnav'.$mode.'.css';
             }   
         }
 
