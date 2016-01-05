@@ -12,7 +12,7 @@ load_component_accordion: false
 load_component_autocomplete: true
 load_component_cover: true
 load_component_datepicker: false
-load_component_dotnov: false	
+load_component_dotnav: false	
 load_component_form_advanced: false
 load_component_form_file: false
 load_component_form_password: false
