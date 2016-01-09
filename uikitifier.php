@@ -7,20 +7,22 @@ use \Grav\Common\Page\Page;
 
 class UikitifierPlugin extends Plugin
 {
+    protected $route = 'uikitifier';
+
     /**
      * @return array
      */
     public static function getSubscribedEvents()
     {
         return [
-            'onThemeInitialized' => ['onThemeInitialized', 0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0]
         ];
     }
 
     /**
      * Initialize configuration
      */
-    public function onThemeInitialized()
+    public function onPluginsInitialized()
     {
         if ($this->isAdmin()) {
             $this->active = false;
@@ -40,7 +42,10 @@ class UikitifierPlugin extends Plugin
 
         if ($load_events) {
             $this->enable([
-                'onTwigSiteVariables' => ['onTwigSiteVariables', 0]
+                'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
+                'onTwigTemplatePaths' => ['onTwigAdminTemplatePaths', 0],
+                'onAdminMenu' => ['onAdminMenu', 0],
+                'onDataTypeExcludeFromDataManagerPluginHook' => ['onDataTypeExcludeFromDataManagerPluginHook', 0],
             ]);
         }
     }
@@ -135,7 +140,7 @@ class UikitifierPlugin extends Plugin
             } elseif ($config['style'] == 'gradient') {
                 $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnav.gradient'.$mode.'.css';
             } else {
-                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnnav'.$mode.'.css';
+                $uikitifier_bits[] = 'plugin://uikitifier/css/components/dotnav'.$mode.'.css';
             }   
         }
 
@@ -315,5 +320,34 @@ class UikitifierPlugin extends Plugin
         $assets = $this->grav['assets'];
         $assets->registerCollection('uikit', $uikitifier_bits);
         $assets->add('uikit', 100);
+    }
+
+     /**
+     * Add templates directory to twig lookup paths.
+     */
+    public function onTwigTemplatePaths()
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
+    }
+    /**
+     * Add plugin templates path
+     */
+    public function onTwigAdminTemplatePaths()
+    {
+        $this->grav['twig']->twig_paths[] = __DIR__ . '/admin/templates';
+    }
+    /**
+     * Add navigation item to the admin plugin
+     */
+    public function onAdminMenu()
+    {
+        $this->grav['twig']->plugins_hooked_nav['UIKitifier'] = ['route' => $this->route, 'icon' => 'fa-gears'];
+    }
+    /**
+     * Exclude uikitifier from the Data Manager plugin
+     */
+    public function onDataTypeExcludeFromDataManagerPluginHook()
+    {
+        $this->grav['admin']->dataTypesExcludedFromDataManagerPlugin[] = 'uikitifier';
     }
 }
