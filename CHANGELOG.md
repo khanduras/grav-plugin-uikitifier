@@ -1,7 +1,14 @@
+# v0.3.0
+## 1/9/2016
+
+1. [](#improved)
+    * Corrected readme.md (thanks to @nickstamat)
+    * Added blueprint.yaml options to toggle Components
+
 # v0.2.4
 ## 1/5/2016
 
-1. [](#updated)
+1. [](#improved)
     * Corrected dotnav (thanks to @nickstamat)
 
 # v0.2.1

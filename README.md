@@ -24,8 +24,6 @@ To best understand what the Materializer plugin provides, you should read throug
 
 ## Configuration
 
-UIKitifier is **enabled** but **not always loaded** by default.  You can change this behavior by setting `always_load: true` in the plugin's configuration.  Simply copy the `user/plugins/uikitifier/uikitifier.yaml` into `user/config/plugins/uikitifier.yaml` and make your modifications.
-
 Changes via the Admin Panel will automatically create that file in 'user/config/plugins'.
 
 ```
@@ -44,7 +42,7 @@ load_component_accordion: false
 load_component_autocomplete: true
 load_component_cover: true
 load_component_datepicker: false
-load_component_dotnov: false	
+load_component_dotnav: false	
 load_component_form_advanced: false
 load_component_form_file: false
 load_component_form_password: false

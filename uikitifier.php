@@ -55,6 +55,8 @@ class UikitifierPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
+        require_once __DIR__ . '/classes/fetchComments.php';
+
         $config = $this->config->get('plugins.uikitifier');
         $mode = $config['mode'] == 'production' ? '.min' : '';
 
@@ -315,11 +317,14 @@ class UikitifierPlugin extends Plugin
             }   
         }
 
-
-
         $assets = $this->grav['assets'];
         $assets->registerCollection('uikit', $uikitifier_bits);
         $assets->add('uikit', 100);
+
+        
+
+        $twig = $this->grav['twig'];
+        $twig->twig_vars['fetchComments'] = new FetchComments();
     }
 
      /**
@@ -349,5 +354,6 @@ class UikitifierPlugin extends Plugin
     public function onDataTypeExcludeFromDataManagerPluginHook()
     {
         $this->grav['admin']->dataTypesExcludedFromDataManagerPlugin[] = 'uikitifier';
-    }
+    }    
+
 }
