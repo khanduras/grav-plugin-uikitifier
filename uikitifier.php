@@ -269,6 +269,7 @@ class UikitifierPlugin extends Plugin
 
 
         if ($config['load_all'] or $config['load_component_slideshow']) {
+            $uikitifier_bits[] = 'plugin://uikitifier/js/components/slideshow'.$mode.'.js';
             if ($config['style'] == 'almost-flat') {
                 $uikitifier_bits[] = 'plugin://uikitifier/css/components/slideshow.almost-flat'.$mode.'.css';
             } elseif ($config['style'] == 'gradient') {
