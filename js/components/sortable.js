@@ -1,4 +1,4 @@
-/*! UIkit 2.24.3 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.26.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 /*
   * Based on nativesortable - Copyright (c) Brian Grinstead - https://github.com/bgrins/nativesortable
   */
@@ -131,7 +131,7 @@
                 }
 
                 // inside or outside of sortable?
-                var sortable  = closestSortable(e.target),
+                var sortable  = closestSortable(currentlyDraggingElement),
                     component = draggingPlaceholder.$sortable,
                     ev        = { type: e.type };
 
@@ -166,6 +166,11 @@
                     return;
                 }
 
+                if ($this.options.handleClass) {
+                    var handle = $target.hasClass($this.options.handleClass) ? $target : $target.closest('.'+$this.options.handleClass, $this.element);
+                    if (!handle.length) return;
+                }
+
                 e.preventDefault();
 
                 if (!supportsTouch && $link.length) {
@@ -182,19 +187,6 @@
                 e.data.sortable = element;
 
                 return $this.dragStart(e, this);
-            });
-
-            var handleDragOver = delegate(function(e) {
-
-                if (!currentlyDraggingElement) {
-                    return true;
-                }
-
-                if (e.preventDefault) {
-                    e.preventDefault();
-                }
-
-                return false;
             });
 
             var handleDragEnter = delegate(UI.Utils.debounce(function(e) {
@@ -314,17 +306,7 @@
                 return;
             }
 
-            if ($this.options.handleClass) {
-
-                var handle = target.hasClass($this.options.handleClass) ? target : target.closest('.'+$this.options.handleClass, $this.element);
-
-                if (!handle.length) {
-                    //e.preventDefault();
-                    return;
-                }
-            }
-
-            if (target.is('.'+$this.options.noDragClass) || target.closest('.'+$this.options._noDragClass).length) {
+            if (target.is('.'+$this.options.noDragClass) || target.closest('.'+$this.options.noDragClass).length) {
                 return;
             }
 
@@ -345,7 +327,7 @@
             delayIdle = {
 
                 pos       : { x:e.pageX, y:e.pageY },
-                threshold : $this.options.threshold,
+                threshold : $this.options.handleClass ? 0 : $this.options.threshold,
                 apply     : function(evt) {
 
                     draggingPlaceholder = UI.$('<div class="'+([$this.options.draggingClass, $this.options.dragCustomClass].join(' '))+'"></div>').css({
@@ -529,7 +511,9 @@
             }
 
             triggers.forEach(function (trigger, i) {
-                trigger.sortable.element.trigger('change.uk.sortable', [trigger.sortable, el, trigger.mode]);
+                if (trigger.sortable) {
+                    trigger.sortable.element.trigger('change.uk.sortable', [trigger.sortable, el, trigger.mode]);
+                }
             });
         },
 
@@ -613,10 +597,12 @@
 
             this.element.children().each(function(j, child) {
                 item = {};
-                for (var i = 0; i < child.attributes.length; i++) {
+                for (var i = 0, attr, val; i < child.attributes.length; i++) {
                     attribute = child.attributes[i];
                     if (attribute.name.indexOf('data-') === 0) {
-                        item[attribute.name.substr(5)] = UI.Utils.str2json(attribute.value);
+                        attr       = attribute.name.substr(5);
+                        val        =  UI.Utils.str2json(attribute.value);
+                        item[attr] = (val || attribute.value=='false' || attribute.value=='0') ? val:attribute.value;
                     }
                 }
                 data.push(item);
