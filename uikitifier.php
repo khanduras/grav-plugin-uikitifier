@@ -234,7 +234,15 @@ class UikitifierPlugin extends Plugin
         if ($config['load_all'] or $config['load_component_pagination']) {
             $uikitifier_bits[] = 'plugin://uikitifier/js/components/pagination'.$mode.'.js';
         }
+        
+        if ($config['load_all'] or $config['load_component_parallax']) {
+            $uikitifier_bits[] = 'plugin://uikitifier/js/components/parallax'.$mode.'.js';
+        }
 
+		if ($config['load_all'] or $config['load_component_grid_parallax']) {
+            $uikitifier_bits[] = 'plugin://uikitifier/js/components/grid-parallax'.$mode.'.js';
+        }
+        
         if ($config['load_all'] or $config['load_component_placeholder']) {
             $uikitifier_bits[] = 'plugin://uikitifier/js/components/placeholder'.$mode.'.js';
             if ($config['style'] == 'almost-flat') {
