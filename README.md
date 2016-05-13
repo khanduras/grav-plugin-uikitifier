@@ -53,6 +53,8 @@ load_component_lightbox: false
 load_component_nestable: false
 load_component_notify: false
 load_component_pagination: false
+load_component_parallax: false
+load_component_grid_parallax :false
 load_component_placeholder: false
 load_component_progress: false
 load_component_search: true
