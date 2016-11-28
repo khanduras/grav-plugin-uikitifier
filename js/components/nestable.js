@@ -1,4 +1,4 @@
-/*! UIkit 2.26.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
+/*! UIkit 2.27.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 /*
  * Based on Nestable jQuery Plugin - Copyright (c) 2012 David Bushell - http://dbushell.com/
  */
@@ -10,8 +10,8 @@
         component = addon(UIkit);
     }
 
-    if (typeof define == "function" && define.amd) {
-        define("uikit-nestable", ["uikit"], function(){
+    if (typeof define == 'function' && define.amd) {
+        define('uikit-nestable', ['uikit'], function(){
             return component || addon(UIkit);
         });
     }
@@ -130,7 +130,8 @@
 
             var onStartEvent = function(e) {
 
-                var handle = UI.$(e.target);
+                var handle = UI.$(e.target),
+                    link   = handle.is('a[href]') ? handle:handle.parents('a[href]');
 
                 if (e.target === $this.element[0]) {
                     return;
@@ -161,6 +162,8 @@
 
                 $this.delayMove = function(evt) {
 
+                    link = false;
+
                     evt.preventDefault();
                     $this.dragStart(e);
                     $this.trigger('start.uk.nestable', [$this]);
@@ -171,6 +174,15 @@
                 $this.delayMove.x         = parseInt(e.pageX, 10);
                 $this.delayMove.y         = parseInt(e.pageY, 10);
                 $this.delayMove.threshold = $this.options.idlethreshold;
+
+                if (link.length && eEnd == 'touchend') {
+
+                    $this.one(eEnd, function(){
+                        if (link && link.attr('href').trim()) {
+                            location.href = link.attr('href');
+                        }
+                    });
+                }
 
                 e.preventDefault();
             };
@@ -325,7 +337,7 @@
         },
 
         toggleItem: function(li) {
-            this[li.hasClass(this.options.collapsedClass) ? "expandItem":"collapseItem"](li);
+            this[li.hasClass(this.options.collapsedClass) ? 'expandItem':'collapseItem'](li);
         },
 
         expandItem: function(li) {
@@ -356,7 +368,7 @@
         setParent: function(li) {
 
             if (li.children(this.options._listClass).length) {
-                li.addClass("uk-parent");
+                li.addClass('uk-parent');
             }
         },
 
@@ -612,7 +624,7 @@
                 }
 
                 if (!parent.children().length) {
-                    if (!parent.data("nestable")) this.unsetParent(parent.parent());
+                    if (!parent.data('nestable')) this.unsetParent(parent.parent());
                 }
 
                 this.checkEmptyList(this.dragRootEl);
