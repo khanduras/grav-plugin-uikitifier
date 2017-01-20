@@ -2,11 +2,12 @@
 ## 1/20/2017
 
 1. [](#new)
-1. [](#improved)
-    * Corrected readme.md (thanks to @nickstamat)
-    * Works with current Admin plugin
+    * Multi-language support
+1. [](#improved)    
+    * UIkit version 2.27.2
+    * Reprogramming and updating the plugin code
 1. [](#bugfix)
-    * Fix that the plugin overwrites the admin css even if it's disabled  
+    * The CSS of the admin plugin will not be overwritten anymore ([Issue #4](https://github.com/khanduras/grav-plugin-uikitifier/issues/4)).  
 
 # v0.3.0
 ## 1/9/2016

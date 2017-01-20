@@ -34,7 +34,7 @@ Here is the default configuration and an explanation of available options:
 ```yaml
 enabled: true
 minified: false
-theme: flat # flat | almost-flat | gradient
+theme: flat # flat | almost_flat | gradient
 load_all: false
 
 components:
