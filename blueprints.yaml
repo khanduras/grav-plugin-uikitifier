@@ -1,7 +1,7 @@
 name: Uikitifier
-version: 0.3.0
-description: "Loads UIKit v2.26.2 by Yootheme"
-icon: gears
+version: 1.0.0
+description: "Includes the lightweight and modular front-end framework [UIkit](http://getuikit.com) **v2.27.2** by [YOOtheme](http://yootheme.com) in your site."
+icon: cubes
 author:
   name: Daniel James
   email: danieljames@chiefqualakon.net
@@ -13,326 +13,395 @@ bugs: https://github.com/khanduras/grav-plugin-uikitifier/issues
 license: MIT
 
 form:
-  validation: loose
+  validation: strict
   fields:
-    enabled:
-      type: toggle
-      label: Plugin status
-      highlight: true
-      default: false
-      options:
-        true: Enabled
-        false: Disabled
-      validate:
-        type: bool
-    mode:
-      type: toggle
-      label: Production Mode
-      options:
-        production: Production
-        staging: Staging
-      validate:
-        type: string
-    load_uikit:
-      type: toggle
-      label: Load UI Kit?
-      highlight: true
-      default: true
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    style:
-      type: toggle
-      label: Style
-      options:
-        flat: Flat
-        almost-flat: Almost-Flat
-        gradient: Gradient
-      validate:
-        type: string
-    cover_section:
-      type: section
-      title: Components
-      underline: true
-    load_component_accordion:
-      type: toggle
-      label: Accordion
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_autocomplete:
-      type: toggle
-      label: Autocomplete
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_cover:
-      type: toggle
-      label: Cover
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_datepicker:
-      type: toggle
-      label: Date Picker
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_dotnav:
-      type: toggle
-      label: Dot Nav
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_form_advanced:
-      type: toggle
-      label: Form Advanced
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_form_file:
-      type: toggle
-      label: Form File
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_form_password:
-      type: toggle
-      label: Form Password
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_form_select:
-      type: toggle
-      label: Form Select
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_grid:
-      type: toggle
-      label: Grid
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_htmleditor:
-      type: toggle
-      label: HTML Editor
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_lightbox:
-      type: toggle
-      label: Lightbox
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_nestable:
-      type: toggle
-      label: Nestable
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_notify:
-      type: toggle
-      label: Notify
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_pagination: 
-      type: toggle
-      label: Pagination
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_parallax:
-      type: toggle
-      label: Parallax
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_grid_parallax:
-      type: toggle
-      label: Grid Parallax
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool        
-    load_component_placeholder:
-      type: toggle
-      label: Placeholder
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_progress:
-      type: toggle
-      label: Progress
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_search:
-      type: toggle
-      label: Search
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_slideshow:
-      type: toggle
-      label: Slideshow
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_slideshow-fx:
-      type: toggle
-      label: Slideshow FX
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_slidenav:
-      type: toggle
-      label: Slidenav
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_sortable:
-      type: toggle
-      label: Sortable
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_sticky:
-      type: toggle
-      label: Sticky
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_timepicker:
-      type: toggle
-      label: Time Picker
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_tooltip:
-      type: toggle
-      label: Tooltip
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
-    load_component_upload:
-      type: toggle
-      label: Upload
-      highlight: true
-      default: false
-      options:
-        true: Yes
-        false: No
-      validate:
-        type: bool
+
+    tabs:
+      type: tabs
+      active: 1
+      class: subtle
+      fields:
+
+        configuration:
+          type: tab
+          title: PLUGIN_UIKITIFIER.CONFIGURATION
+          fields:
+
+            enabled:
+              type: toggle
+              label: PLUGIN_UIKITIFIER.PLUGIN_STATUS
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_QRCODE.ENABLED
+                0: PLUGIN_QRCODE.DISABLED
+              validate:
+                type: bool
+            minified:
+              type: toggle
+              label: PLUGIN_UIKITIFIER.MINIFIED
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_UIKITIFIER.ENABLED
+                0: PLUGIN_UIKITIFIER.DISABLED
+              validate:
+                type: bool
+            theme:
+              type: select
+              size: small
+              label: PLUGIN_UIKITIFIER.THEME
+              default: flat
+              options:
+                flat: PLUGIN_UIKITIFIER.THEME_FLAT
+                almost-flat: PLUGIN_UIKITIFIER.THEME_ALMOST_FLAT
+                gradient: PLUGIN_UIKITIFIER.THEME_GRADIENT
+              validate:
+                type: string
+            load_all:
+              type: toggle
+              label: PLUGIN_UIKITIFIER.LOAD_ALL_COMPONENTS
+              highlight: 1
+              default: 0
+              options:
+                1: PLUGIN_UIKITIFIER.ENABLED
+                0: PLUGIN_UIKITIFIER.DISABLED
+              validate:
+                type: bool
+
+        components:
+          type: tab
+          title: PLUGIN_UIKITIFIER.COMPONENTS
+          fields:
+
+            section.components.layout:
+              type: section
+              title: PLUGIN_UIKITIFIER.LAYOUT
+              underline: true
+              fields:
+                components.grid:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.GRID
+                  help: PLUGIN_UIKITIFIER.GRID_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.grid_parallax:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.GRID_PARALLAX
+                  help: PLUGIN_UIKITIFIER.GRID_PARALLAX_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+
+            section.components.navigations:
+              type: section
+              title: PLUGIN_UIKITIFIER.NAVIGATIONS
+              underline: true
+              fields:
+                components.dotnav:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.DOTNAV
+                  help: PLUGIN_UIKITIFIER.DOTNAV_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.slidenav:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SLIDENAV
+                  help: PLUGIN_UIKITIFIER.SLIDENAV_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.pagination:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.PAGINATION
+                  help: PLUGIN_UIKITIFIER.PAGINATION_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+
+            section.components.common:
+              type: section
+              title: PLUGIN_UIKITIFIER.COMMON
+              underline: true
+              fields:
+                components.form_advanced:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.FORM_ADVANCED
+                  help: PLUGIN_UIKITIFIER.FORM_ADVANCED_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.form_file:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.FORM_FILE
+                  help: PLUGIN_UIKITIFIER.FORM_FILE_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.form_password:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.FORM_PASSWORD
+                  help: PLUGIN_UIKITIFIER.FORM_PASSWORD_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.form_select:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.FORM_SELECT
+                  help: PLUGIN_UIKITIFIER.FORM_SELECT_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.placeholder:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.PLACEHOLDER
+                  help: PLUGIN_UIKITIFIER.PLACEHOLDER_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.progress:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.PROGRESS
+                  help: PLUGIN_UIKITIFIER.PROGRESS_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+
+            section.components.javascript:
+              type: section
+              title: PLUGIN_UIKITIFIER.JAVASCRIPT
+              underline: true
+              fields:
+                components.lightbox:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.LIGHTBOX
+                  help: PLUGIN_UIKITIFIER.LIGTHBOX_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.autocomplete:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.AUTOCOMPLETE
+                  help: PLUGIN_UIKITIFIER.AUTOCOMPLETE_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.datepicker:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.DATEPICKER
+                  help: PLUGIN_UIKITIFIER.DATEPICKER_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.htmleditor:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.HTMLEDITOR
+                  help: PLUGIN_UIKITIFIER.HTMLEDITOR_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.slider:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SLIDER
+                  help: PLUGIN_UIKITIFIER.SLIDER_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.slideset:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SLIDESET
+                  help: PLUGIN_UIKITIFIER.SLIDESET_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.slideshow:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SLIDESHOW
+                  help: PLUGIN_UIKITIFIER.SLIDESHOW_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.parallax:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.PARALLAX
+                  help: PLUGIN_UIKITIFIER.PARALLAX_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.accordion:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.ACCORDION
+                  help: PLUGIN_UIKITIFIER.ACCORDION_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.notify:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.NOTIFY
+                  help: PLUGIN_UIKITIFIER.NOTIFY_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.search:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SEARCH
+                  help: PLUGIN_UIKITIFIER.SEARCH_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.nestable:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.NESTABLE
+                  help: PLUGIN_UIKITIFIER.NESTABLE_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.sortable:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.SORTABLE
+                  help: PLUGIN_UIKITIFIER.SORTABLE_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.sticky:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.STICKY
+                  help: PLUGIN_UIKITIFIER.STICKY_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.timepicker:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.TIMEPICKER
+                  help: PLUGIN_UIKITIFIER.TIMEPICKER_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.tooltip:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.TOOLTIP
+                  help: PLUGIN_UIKITIFIER.TOOLTIP_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool
+                components.upload:
+                  type: toggle
+                  label: PLUGIN_UIKITIFIER.UPLOAD
+                  help: PLUGIN_UIKITIFIER.UPLOAD_HELP
+                  highlight: 1
+                  default: 0
+                  options:
+                    1: PLUGIN_UIKITIFIER.ENABLED
+                    0: PLUGIN_UIKITIFIER.DISABLED
+                  validate:
+                    type: bool

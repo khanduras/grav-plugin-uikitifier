@@ -1,3 +1,13 @@
+# v1.0.0
+## 1/20/2017
+
+1. [](#new)
+1. [](#improved)
+    * Corrected readme.md (thanks to @nickstamat)
+    * Works with current Admin plugin
+1. [](#bugfix)
+    * Fix that the plugin overwrites the admin css even if it's disabled  
+
 # v0.3.0
 ## 1/9/2016
 
